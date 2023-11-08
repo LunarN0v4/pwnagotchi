@@ -12,9 +12,9 @@ langs:
 
 install:
 	curl https://releases.hashicorp.com/packer/$(PACKER_VERSION)/packer_$(PACKER_VERSION)_linux_amd64.zip -o /tmp/packer.zip
-	mkdir /tmp/packer/
-	unzip /tmp/packer.zip -d /tmp/packer/
-	sudo mv /tmp/packer/packer /usr/bin/packer
+	mkdir /tmp/packertmp/
+	unzip /tmp/packer.zip -d /tmp/packertmp/
+	sudo mv /tmp/packertmp/packer /usr/bin/packer
 	git clone https://github.com/solo-io/packer-builder-arm-image /tmp/packer-builder-arm-image
 	cd /tmp/packer-builder-arm-image && go get -d ./... && go mod download && go build
 	sudo cp /tmp/packer-builder-arm-image/packer-plugin-arm-image /usr/bin/packer-builder-arm-image
@@ -26,6 +26,7 @@ image:
 	sudo zip pwnagotchi-raspbian-lite-$(PWN_VERSION).zip pwnagotchi-raspbian-lite-$(PWN_VERSION).sha256 pwnagotchi-raspbian-lite-$(PWN_VERSION).img
 
 clean:
+	rm -rf /tmp/packertmp/
 	rm -rf /tmp/packer-builder-arm-image
 	rm -f pwnagotchi-raspbian-lite-*.zip pwnagotchi-raspbian-lite-*.img pwnagotchi-raspbian-lite-*.sha256
 	rm -rf builder/output-pwnagotchi  builder/packer_cache
