@@ -1,5 +1,6 @@
-dist: bionic
+dist: focal
 language: go
+os: linux
 go:
   - 1.x
 env:
@@ -8,9 +9,9 @@ env:
     - LC_ALL=C
 deploy:
   provider: releases
-  api_key:
+  token:
       secure: "Rj0QnEDv02UzjKaxHHxJ/Sdj50EOFIrsKShr27GtVNSwHmNKxQuwlh31T0DQdif4wzcDtUZ5XWxr85vLkKJt1L8anb7Tb63qlu7Da69C+upSUow1uJkjsiScbMPqwHpwDIkkcUIbPsdbowI7qiNhRBD7nF8yyLPC5YLiU0cXKuGh4+Q5xdIlL3P7p8jm0919Y+olglzAZj0iNR/QxGOb+laNH8xi0oUsIPi5V0ZFfO/W/sm+nks9ki5nolfd1ML1gcbOD7uKuxIMTUrpDLl4p2Jx9IVQW+G2/tkmNLbP5Ga65NxQcfABQDYY3tCD8PsmFK9PEwa4cMbGJjqlo3yR7P21J5Aj3rK+L4KDntOvwem3Z3Y/v2JlQZn+gelhNFCxuPBi3ZihSf7POMHtpAYmi13N2ruzOg1ayjeYph0iN3vXIPs67DpAPaxK+8L2yoo6Nr/Cago9pGTkZoqS+J0fnWT31NXoYREPgg//L2+m42twQirFXttbhlGTBgNMLXpwcm8bZ2DW3pu3AEgVUxSoNAOjudoeyC0VzA6nUqe6STmfk06OYqcwM8q8NEyD62iAvUYU3Q7FnauZqcBqcP+ZYx82NPZybrQRX6YlJck5UomHbbEfjgpDFT+WvjrrfICmXH29YBOL1LWR4cKMT6RY58Cv8hT2PYxomB2I+DRrbqU="
-  skip_cleanup: true
+  cleanup: false
   file_glob: true
   file:
     - pwnagotchi-*.zip
