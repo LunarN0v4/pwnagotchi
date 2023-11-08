@@ -11,6 +11,14 @@ langs:
     done
 
 install:
+	wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+	echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+	sudo apt update && sudo apt install packer=$(PACKER_VERSION)
+	git clone https://github.com/solo-io/packer-builder-arm-image /tmp/packer-builder-arm-image
+	cd /tmp/packer-builder-arm-image && go get -d ./... && go mod download && go build
+	sudo cp /tmp/packer-builder-arm-image/packer-plugin-arm-image /usr/bin/packer-builder-arm-image
+
+installnonapt:
 	curl https://releases.hashicorp.com/packer/$(PACKER_VERSION)/packer_$(PACKER_VERSION)_linux_amd64.zip -o /tmp/packer.zip
 	mkdir /tmp/packertmp/
 	unzip /tmp/packer.zip -d /tmp/packertmp/
