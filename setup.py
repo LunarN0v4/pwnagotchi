@@ -64,11 +64,11 @@ with open('requirements.txt') as fp:
 VERSION_FILE = 'pwnagotchi/_version.py'
 pwnagotchi_version = version(VERSION_FILE)
 
-setup(name='pwnagotchi',
+setup(name='novagotchi',
       version=pwnagotchi_version,
       description='(⌐■_■) - Deep Reinforcement Learning instrumenting bettercap for WiFI pwning.',
-      author='evilsocket && the dev team',
-      author_email='evilsocket@gmail.com',
+      author='Nova Notepad (LunarN0v4), evilsocket & the pwnagotchi dev team',
+      author_email='zeus@zeusteam.dev',
       url='https://pwnagotchi.ai/',
       license='GPL',
       install_requires=required,
